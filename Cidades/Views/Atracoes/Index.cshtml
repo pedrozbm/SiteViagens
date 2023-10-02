@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Cidades.Models.Atracoes>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Estilo para o corpo (body) do site */
+    .body {
+        background-color: #ffeaad;
+    }
+
+    /* Estilo para o título <h2> */
+    .tittle {
+        font-size: 50px;
+        font-weight: bold;
+        color: #1c2130;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Estilo para o container da lista de atrações */
+    .attraction-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Estilo para o card de cada atração */
+    .attraction-card {
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background-color: #b3e099;
+    }
+
+    /* Estilos para a imagem da atração */
+    .attraction-image {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    /* Estilo para o título da atração */
+    .attraction-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #1c2130;
+    }
+
+    /* Estilo para a descrição da atração */
+    .attraction-description {
+        font-size: 14px;
+        color: #1c2130;
+        margin-top: 10px;
+    }
+
+    /* Estilo para o botão de detalhes */
+    .details-button {
+        background-color: #d14334;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+<body>
+    <h2 class="tittle">DESCUBRA NOVAS ATRAÇÕES</h2>
+
+    <div class="attraction-list">
+        @foreach (var item in Model)
+        {
+            <div class="attraction-card">
+                <img class="attraction-image" src="@item.LinkImg" alt="Imagem de @item.Nome">
+                <div class="attraction-title">@item.Nome</div>
+                <div class="attraction-description">@item.Descricao</div>
+                <a href="@Url.Action("Details", new { id = item.ID })" class="details-button">Saiba Mais</a>
+            </div>
+        }
+    </div>
+</body>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+
+<style>
+    .nav-item {
+        font-size: 26px;
+        margin-left: 20px;
+        font-family: 'Arial', sans-serif;
+        transition: color 0.3s, background-color 0.3s, transform 0.5s;
+        border-radius: 5px;
+        padding: 8px 16px;
+        display: inline-block;
+    }
+
+        .nav-item:hover {
+            color: #ffeaad;
+            background-color: #028f76;
+            text-decoration: none;
+            border-radius: 20px;
+            transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+        }
+</style>
+
+
+<html>
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c2130;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://i.postimg.cc/02XRwQVG/Logo-Ag-ncia-de-Viagens-1-Photo-Room-png-Photo-Room.png" alt="Minha Figura" style="height: 100px;">
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Cidades", "Index", "Cidades", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Todas as Atrações", "Index", "Atracoes", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                                  </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Pedro Barbieri</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
